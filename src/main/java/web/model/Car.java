@@ -19,31 +19,19 @@ public class Car {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getModel() {
         return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
     }
 
     public String getColor() {
         return color;
     }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
-
     public Integer getSeries() {
         return series;
     }
 
-    public void setSeries(Integer series) {
-        this.series = series;
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

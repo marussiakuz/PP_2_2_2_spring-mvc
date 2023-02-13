@@ -12,12 +12,15 @@ import java.util.List;
 
 @Controller
 public class CarController {
+    private final CarService carService;
 
     @Autowired
-    private CarService carService;
+    public CarController(CarService carService) {
+        this.carService = carService;
+    }
 
     @GetMapping(value = "/cars")
-    public String getListOfCars(ModelMap model, @RequestParam(required = false) Integer count) {
+    public String getListOfCars(ModelMap model, @RequestParam(required = false, defaultValue = "5") Integer count) {
         List<Car> cars = carService.getAll(count);
         model.addAttribute("cars", cars);
         model.addAttribute("selectedCount", cars.size());
