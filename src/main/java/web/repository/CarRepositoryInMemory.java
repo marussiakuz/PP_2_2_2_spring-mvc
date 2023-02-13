@@ -3,7 +3,6 @@ package web.repository;
 import org.springframework.stereotype.Repository;
 import web.model.Car;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,12 +25,9 @@ public class CarRepositoryInMemory implements CarRepository {
 
     @Override
     public List<Car> getAll(Integer count) {
-        if (count != null && count >= 0 && count < cars.size()) {
-            return cars.values().stream()
-                    .limit(count).collect(Collectors.toList());
-        }
-
-        return new ArrayList<>(cars.values());
+        return cars.values().stream()
+                .limit(count >= length || count < 0 ? length : count)
+                .collect(Collectors.toList());
     }
 
     @Override
